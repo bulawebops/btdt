@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bin There Dump That Pricing Sheet 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #121826;
+      --muted: #4b5563;
+      --line: #d7deea;
+      --yellow: #ffe600;
+      --blue: #6f97dc;
+      --red: #d44a2f;
+      --green: #dbe8d7;
+      --gray: #edf1f6;
+      --gray-2: #e4e9f1;
+      --danger: #c61d1d;
+      --shadow: 0 18px 50px rgba(16, 24, 40, 0.10);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(111, 151, 220, 0.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(255, 230, 0, 0.15), transparent 26%),
+        var(--bg);
+      padding: 32px 20px;
+    }
+
+    .pricing-sheet {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid rgba(18, 24, 38, 0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .sheet-header {
+      background: var(--yellow);
+      text-align: center;
+      padding: 28px 20px;
+      border-bottom: 1px solid rgba(18, 24, 38, 0.14);
+    }
+
+    .sheet-header h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 3rem);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .plan {
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, #f9fbfd 0%, #eef2f7 100%);
+    }
+
+    .plan:last-child { border-right: 0; }
+
+    .plan__size,
+    .plan__price,
+    .plan__weight {
+      text-align: center;
+      padding: 20px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .plan__size {
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      font-weight: 800;
+      text-transform: lowercase;
+      background: rgba(255,255,255,0.55);
+    }
+
+    .plan__price {
+      font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+      font-weight: 500;
+      background: rgba(18, 24, 38, 0.02);
+    }
+
+    .plan__weight {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: 500;
+      border-bottom: 0;
+    }
+
+    .band {
+      text-align: center;
+      padding: 18px 20px;
+      font-weight: 800;
+      font-size: clamp(1.15rem, 1.4vw, 1.75rem);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .band--blue {
+      background: var(--blue);
+      color: #0d1525;
+    }
+
+    .band--red {
+      background: var(--red);
+      color: #fff;
+      padding-block: 24px;
+    }
+
+    .band--red .subtext {
+      display: block;
+      font-size: clamp(1rem, 1.3vw, 1.3rem);
+      font-weight: 600;
+      margin-top: 6px;
+      opacity: 0.96;
+    }
+
+    .notice-stack {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .notice {
+      text-align: center;
+      padding: 18px 18px;
+      font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+      border-bottom: 1px solid var(--line);
+      background: var(--gray);
+    }
+
+    .notice:last-child { border-bottom: 0; }
+    .notice--green { background: var(--green); }
+    .notice strong { font-weight: 800; }
+
+    .dimensions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dimension-card {
+      padding: 28px 18px 34px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, #f7f9fc 0%, #eef2f6 100%);
+    }
+
+    .dimension-card:last-child { border-right: 0; }
+
+    .dimension-card h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      font-weight: 800;
+    }
+
+    .dimension-card p {
+      margin: 0;
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .rules {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .rules__left,
+    .rules__right {
+      padding: 24px 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .rules__right { border-right: 0; }
+
+    .rules__left {
+      background: #d7e6d1;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rules__left p {
+      margin: 0;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.35;
+      font-size: clamp(1rem, 1.35vw, 1.45rem);
+      color: #39424e;
+    }
+
+    .rules__right {
+      background: #fbfbfc;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rules__right p {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.8vw, 3rem);
+      line-height: 1.25;
+      color: var(--danger);
+      text-transform: uppercase;
+    }
+
+    .rules__right strong {
+      font-weight: 900;
+      text-decoration: underline;
+    }
+
+    .footer-notes {
+      padding: 28px 28px 34px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    }
+
+    .footer-notes p {
+      margin: 0 0 12px;
+      font-size: clamp(1rem, 1.4vw, 1.3rem);
+      line-height: 1.6;
+    }
+
+    .footer-notes p:last-child { margin-bottom: 0; }
+    .footer-notes strong { font-weight: 800; }
+    .danger-inline {
+      color: #e11d48;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 920px) {
+      .plans,
+      .dimensions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .plan:nth-child(2),
+      .dimension-card:nth-child(2) {
+        border-right: 0;
+      }
+
+      .plan:nth-child(-n + 2),
+      .dimension-card:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .rules {
+        grid-template-columns: 1fr;
+      }
+
+      .rules__left {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 16px;
+      }
+
+      .pricing-sheet {
+        border-radius: 18px;
+      }
+
+      .plans,
+      .dimensions {
+        grid-template-columns: 1fr;
+      }
+
+      .plan,
+      .dimension-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .plan:last-child,
+      .dimension-card:last-child {
+        border-bottom: 0;
+      }
+
+      .sheet-header,
+      .band,
+      .band--red,
+      .notice,
+      .rules__left,
+      .rules__right,
+      .footer-notes {
+        padding-inline: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="pricing-sheet">
+    <header class="sheet-header">
+      <h1>Bin There Dump That Ogden Prices 2026</h1>
+    </header>
+
+    <section class="plans" aria-label="Dumpster pricing">
+      <article class="plan">
+        <div class="plan__size">4 cubic yard</div>
+        <div class="plan__price">$360.00</div>
+        <div class="plan__weight">1 ton included</div>
+      </article>
+
+      <article class="plan">
+        <div class="plan__size">10 cubic yard</div>
+        <div class="plan__price">$395.00</div>
+        <div class="plan__weight">1 ton included</div>
+      </article>
+
+      <article class="plan">
+        <div class="plan__size">14 cubic yard</div>
+        <div class="plan__price">$425.00</div>
+        <div class="plan__weight">2 tons included</div>
+      </article>
+
+      <article class="plan">
+        <div class="plan__size">20 cubic yard</div>
+        <div class="plan__price">$485.00</div>
+        <div class="plan__weight">2 tons included</div>
+      </article>
+    </section>
+
+    <div class="band band--blue">1-7 Day Rental Period</div>
+
+    <div class="band band--red">
+      UTAH COUNTIES SERVED = OGDEN
+      <span class="subtext">Monday-Friday between 8am and 5pm</span>
+    </div>
+
+    <section class="notice-stack" aria-label="Additional fees">
+      <div class="notice notice--green"><strong>$60.00</strong> per ton overweight</div>
+      <div class="notice"><strong>$50.00</strong> = Dumpster relocation fee</div>
+      <div class="notice"><strong>$25.00</strong> per day for extended time / <strong>$100.00</strong> per week</div>
+    </section>
+
+    <section class="dimensions" aria-label="Dumpster dimensions">
+      <article class="dimension-card">
+        <h3>Dimensions</h3>
+        <p>10 ft long;<br>5.5 ft wide; 2 ft tall</p>
+      </article>
+
+      <article class="dimension-card">
+        <h3>Dimensions</h3>
+        <p>10 ft long;<br>7 ft wide; 4 ft tall</p>
+      </article>
+
+      <article class="dimension-card">
+        <h3>Dimensions</h3>
+        <p>11 ft long;<br>8 ft wide; 4.5 ft tall</p>
+      </article>
+
+      <article class="dimension-card">
+        <h3>Dimensions</h3>
+        <p>11 ft long;<br>8 ft wide; 6 ft tall</p>
+      </article>
+    </section>
+
+    <section class="rules" aria-label="Material restrictions">
+      <div class="rules__left">
+        <p>Dirt, sand, cement, sod, granite, rocks or heavy items allowed.</p>
+      </div>
+
+      <div class="rules__right">
+        <p><strong>No</strong> dirt, sand, cement, sod, granite, rocks or heavy items allowed here. <strong>No</strong> tires</p>
+      </div>
+    </section>
+
+    <footer class="footer-notes">
+      <p><strong>$10</strong> per computer or per TV; <strong>$20</strong> per mattress or per box spring.</p>
+      <p><strong>$30</strong> per refrigerator, freezer, AC unit, or anything with freon; <strong>$30</strong> per tire.</p>
+      <p>No hazardous or explosive waste or biomedical waste. <span class="danger-inline">Blown in insulation must be bagged!</span> Dumpster cannot be moved without company permission.</p>
+    </footer>
+  </section>
+</body>
+</html>
